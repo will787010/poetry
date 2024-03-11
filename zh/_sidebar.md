@@ -2,3 +2,4 @@
 * [高先生七律五首](zh/qilv)
 * [七绝六首](zh/qijue)
 * [咏八雅](zh/baya)
+* [诗选一](zh/album1)
