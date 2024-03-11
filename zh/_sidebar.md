@@ -1,3 +1,4 @@
 * [高万春先生简介](zh/intro)
 * [高先生七律五首](zh/qilv)
+* [七绝六首](zh/qijue)
 * [咏八雅](zh/baya)
