@@ -5,3 +5,4 @@
 * [咏八雅](zh/baya)
 * [诗词选二](zh/album2)
 * [咏春诗词选](zh/yongchun)
+* [观喊水泉](zh/hanshuiquan)
