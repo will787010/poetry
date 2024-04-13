@@ -6,3 +6,4 @@
 * [诗词选二](zh/album2)
 * [咏春诗词选](zh/yongchun)
 * [观喊水泉](zh/hanshuiquan)
+* [ 居家抗疫（外五首）](kangyi)
