@@ -189,6 +189,7 @@
     var lightLink = head.getElementsByTagName('link')[0]
     var darkLink = head.getElementsByTagName('link')[1]
     var timeout = 350
+    var isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
     var changeTheme = function () {
       var checked = toggle.checked
       if (checked) {
@@ -217,11 +218,16 @@
     }
     function init () {
       var theme = localStorage.getItem('theme');
-      if (theme === 'dark') {
+      if (isDarkMode) {
         setDarkTheme()
       } else {
         setLightTheme()
       }
+      // if (theme === 'dark') {
+      //   setDarkTheme()
+      // } else {
+      //   setLightTheme()
+      // }
     }
     init()
   </script>
