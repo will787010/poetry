@@ -6,7 +6,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="description" content="Description">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" data-theme="light" href="//unpkg.com/docsify/lib/themes/vue.css">
+  <link rel="stylesheet" data-theme="dark" disabled href="//unpkg.com/docsify/lib/themes/dark.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/adamculpepper/toggle-switchy@latest/toggle-switchy.css">
   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/vuep/dist/vuep.css">
   <style type="text/css">
     *, html, body, .markdown-section code, .markdown-section output:after, .markdown-section pre {
@@ -103,13 +105,36 @@
         padding: 1em 0;
       }
     }
+    .toggle {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      z-index: 333;
+    }
+    body[data-theme="dark"] .markdown-section code, body[data-theme="dark"] .markdown-section pre {
+      background: #3f3f3f;
+    }
+    body[data-theme="dark"] .markdown-section pre>code{
+      background-color: #3f3f3f;
+      color: #c8c8c8;
+    }
+    body[data-theme="dark"] .anchor span {
+      color: #fff;
+    }
+    .markdown-section pre>code {
+      margin: 0;
+    }
   </style>
 </head>
 <body>
-  <nav style="display: none;">
-    <a href="#/">简体中文</a>
-    <a href="#/en/">English</a>
-  </nav>
+  <div class="toggle">
+    <label class="toggle-switchy" for="toggle" data-size="sm" data-style="rounded" data-color="gray">
+      <input type="checkbox" id="toggle" onchange="changeTheme()">
+      <span class="toggle">
+        <span class="switch"></span>
+      </span>
+    </label>
+  </div>
   <div id="app"></div>
   <script>
     window.$docsify = {
@@ -158,5 +183,47 @@
   <script src="//unpkg.com/docsify-pagination/dist/docsify-pagination.min.js"></script>
   <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/zoom-image.min.js"></script>
   <script src="//unpkg.com/vuep"></script>
+  <script>
+    var toggle= document.getElementById('toggle');
+    var head = document.head
+    var lightLink = head.getElementsByTagName('link')[0]
+    var darkLink = head.getElementsByTagName('link')[1]
+    var timeout = 350
+    var changeTheme = function () {
+      var checked = toggle.checked
+      if (checked) {
+        setDarkTheme()
+      } else {
+        setLightTheme()
+      }
+    }
+    function setDarkTheme () {
+      toggle.setAttribute('checked', 'checked');
+      document.body.setAttribute('data-theme', 'dark');
+      setTimeout(() => {
+        lightLink.setAttribute('disabled', 'disabled');
+      }, timeout);
+      darkLink.removeAttribute('disabled');
+      localStorage.setItem('theme', 'dark')
+    }
+    function setLightTheme () {
+      localStorage.setItem('theme', 'light')
+      toggle.removeAttribute('checked');
+      document.body.setAttribute('data-theme', 'light');
+      lightLink.removeAttribute('disabled');
+      setTimeout(() => {
+        darkLink.setAttribute('disabled', 'disabled');
+      }, timeout);
+    }
+    function init () {
+      var theme = localStorage.getItem('theme');
+      if (theme === 'dark') {
+        setDarkTheme()
+      } else {
+        setLightTheme()
+      }
+    }
+    init()
+  </script>
 </body>
 </html>
