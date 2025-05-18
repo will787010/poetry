@@ -8,3 +8,6 @@
 * [观喊水泉](zh/hanshuiquan)
 * [居家抗疫（外五首）](/zh/kangyi)
 * [诗词选三](zh/album3)
+* [元宵](zh/yuanxiao)
+* [七绝·小白花（外六首）](qijue2)
+* [爬山](pashan)
